@@ -1,57 +1,21 @@
-# 📄 File Q&A Bot
+# File Q&A Bot
 
-A simple AI-powered File Question Answering system built using a **Retrieval-Augmented Generation (RAG)** approach.  
-It answers questions strictly based on the content of a given file.
+A simple command-line tool that answers questions based only on the content of a text file. It uses a Retrieval-Augmented Generation (RAG) approach with LangChain and OpenRouter.
 
----
+## How It Works
 
-## 🚀 Features
+The bot reads a `.txt` file and splits it into small chunks. Each chunk is converted into an embedding and stored in a Chroma vector database. When you ask a question, the most relevant chunks are retrieved and passed to the LLM, which answers using only that context.
 
-- 📂 Load and process any `.txt` file  
-- ✂️ Automatic text chunking  
-- 🔍 Semantic search using embeddings  
-- 🧠 Context-based answers using LLM  
-- ❌ No hallucination (answers only from file)  
-
----
-
-## 🧠 How it works
-
-```text
-User Input (File + Question)
-   ↓
-Text Loader (reads file)
-   ↓
-Text Splitter (creates chunks)
-   ↓
-Embeddings Model (vector conversion)
-   ↓
-Chroma DB (stores vectors)
-   ↓
-Retriever (fetches relevant chunks)
-   ↓
-LLM (OpenRouter)
-   ↓
-Final Answer (based only on file)
-```
-
-## 📌 Example
+## Example
 
 ```text
 Enter file path: yoga.txt
 
-You: From where the word 'yoga' comes from?
+You: Where does the word 'yoga' come from?
 
-Assistant:
-The Sanskrit word 'yoga' comes from the word 'yuj' which means, 'to unite'.
+Assistant: The word 'yoga' comes from the Sanskrit word 'yuj', which means 'to unite'.
 ```
 
-## 🛠 Tech Stack
+## Tech Stack
 
-- **Python**
-- **LangChain** – RAG pipeline
-- **OpenRouter** – LLM API  
-- **Chroma DB** – Vector database  
-- **HuggingFace Embeddings** – `all-MiniLM-L6-v2`  
-
----
+The project is built with Python and LangChain. It uses OpenRouter for the LLM and HuggingFace for embeddings.
